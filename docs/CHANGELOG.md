@@ -1,5 +1,34 @@
 # CHANGELOG｜擲筊神諭 Skill 版本歷史
 
+## v2.2 — 2026-04-20｜套件化重構 + 雙版本
+
+### 架構變更
+- 改為標準 Skill 套件結構：
+  ```
+  skills/
+  ├── 擲筊/SKILL.md          ← 眾神版
+  └── 擲筊-通用/SKILL.md     ← 通用版（新增）
+  ```
+- 新增 `scripts/install.sh` 一鍵安裝腳本
+
+### 新增：通用版（擲筊-通用）
+- 單一「通用神明」，不分派特定神祇
+- 廟公伯伯口氣：台味親切、叫使用者「囝仔/少年郎」
+- 完整繼承 v2 的安全守則
+- 情境切換改為「同角色轉口氣」（不換神明）
+- 適合：企業示範、公開場合、偏好簡潔中性的使用者
+
+---
+
+## v2.1 — 2026-04-20｜避開「降駕」改用「應聲／聽見了」
+
+- 移除「降駕」用語，避免扶鸞/乩童儀式擬仿爭議
+- 新規則：
+  - **聽見了**：觀世音、媽祖、註生娘娘、保生大帝（慈悲類）
+  - **應聲**：其他所有神明
+
+---
+
 ## v2 — 2026-04-19｜臺灣民俗神明分工系統
 **Commit**: `9130bd0`
 
@@ -67,15 +96,16 @@
 
 ## 回復版本
 
+舊版本的 `SKILL.md` 在 repo root；v2.2 起移至 `skills/擲筊/SKILL.md`。
+
 ```bash
-# 切回 v1
-git checkout fd96f7f -- SKILL.md
+# 檢視舊版內容（不動檔案）
+git show fd96f7f:SKILL.md    # v1: 通用數位神明
+git show 9130bd0:SKILL.md    # v2: 14 神明
 
-# 切回 v2（目前）
-git checkout 9130bd0 -- SKILL.md
-# 或
-git checkout master -- SKILL.md
+# 取舊版內容覆蓋目前 skill
+git show fd96f7f:SKILL.md > skills/擲筊/SKILL.md
 
-# 同步到 Skills 目錄
-cp SKILL.md ~/.claude/skills/擲筊/SKILL.md
+# 重新安裝到 Claude Code
+./scripts/install.sh
 ```

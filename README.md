@@ -1,18 +1,28 @@
-# ⛩️ bwa-bwei｜擲筊神諭 Claude Code Skill
+# ⛩️ bwa-bwei｜擲筊神諭 Claude Code Skills
 
-融合臺灣民間信仰與語意驗證器的 Claude Code Skill。
-提問 → 召請對應神明 → 擲筊回應 + 隱藏心聲 + 民俗建議。
+融合臺灣民間信仰與語意驗證器的 Claude Code Skill 套件。
+提問 → 召請神明 → 擲筊回應 + 隱藏心聲 + 民俗建議。
 
 > **bwa-bwei** 取自閩南語「擲筊」的羅馬拼音。
 
+## 兩個版本
+
+可擇一或並存安裝：
+
+| 版本 | Skill 名 | 風格 |
+|------|---------|------|
+| 🏛️ **眾神版** | `擲筊` | 14 位神明依職掌分工（媽祖、文昌、月老、土地公、關公、濟公…），情境切換有戲劇感 |
+| 🧓 **通用版** | `擲筊-通用` | 單一通用神明（廟公伯伯口氣），簡潔親切中性 |
+
+兩版本皆內建完整安全守則（生命安全偵測、拒絕傷害意圖、附專業建議等）。
+
 ## 特色
 
-- **14 位神明**依臺灣民俗實際職掌分工（媽祖、文昌、月老、土地公、城隍、關公、濟公…）
 - **三種模式**：自動分派 ／ 指定神明（「我想問媽祖」）／ 眾神開會
 - **真實儀軌**：稟告 → 沉吟 → 擲筊 → 聖筊／笑筊／陰筊 + 民俗建議
 - **尊重禁忌**：一事一問、重大事三聖筊、陰筊後三日不再問
 
-## 範例
+## 範例（眾神版）
 
 > 「今晚要不要洗澡？我好累⋯」
 
@@ -34,8 +44,15 @@
 
 ```bash
 git clone git@github.com:ianlkl11234s/bwa-bwei.git
-mkdir -p ~/.claude/skills/擲筊
-cp bwa-bwei/SKILL.md ~/.claude/skills/擲筊/SKILL.md
+cd bwa-bwei
+./scripts/install.sh       # 一鍵裝兩個版本
+```
+
+或單裝其中一版：
+
+```bash
+cp -r skills/擲筊 ~/.claude/skills/          # 只裝眾神版
+cp -r skills/擲筊-通用 ~/.claude/skills/     # 只裝通用版
 ```
 
 ## 使用
@@ -43,21 +60,40 @@ cp bwa-bwei/SKILL.md ~/.claude/skills/擲筊/SKILL.md
 | 觸發 | 範例 |
 |------|------|
 | 一般召請 | 「擲筊」「問神明」「筊杯」 |
-| 指定神明 | 「我想問媽祖」「請文昌帝君應聲」 |
-| 眾神開會 | 「請眾神開會」 |
+| 指定神明（眾神版） | 「我想問媽祖」「請文昌帝君應聲」 |
+| 眾神開會（眾神版） | 「請眾神開會」 |
 
 **退駕**：「退駕」「還俗」「結束擲筊」
 
+## 目錄結構
+
+```
+bwa-bwei/
+├── skills/
+│   ├── 擲筊/          ← 眾神版
+│   │   └── SKILL.md
+│   └── 擲筊-通用/     ← 通用版
+│       └── SKILL.md
+├── scripts/
+│   └── install.sh
+├── docs/
+│   ├── DEITIES.md    ← 14 位神明職掌對照（眾神版）
+│   ├── USAGE.md      ← 使用範例
+│   └── CHANGELOG.md
+└── README.md
+```
+
 ## 文件
 
-- [`SKILL.md`](SKILL.md) — Skill 本體（完整規則）
+- [`skills/擲筊/SKILL.md`](skills/擲筊/SKILL.md) — 眾神版完整規則
+- [`skills/擲筊-通用/SKILL.md`](skills/擲筊-通用/SKILL.md) — 通用版完整規則
 - [`docs/DEITIES.md`](docs/DEITIES.md) — 14 位神明職掌對照
 - [`docs/USAGE.md`](docs/USAGE.md) — 使用範例彙整
 - [`docs/CHANGELOG.md`](docs/CHANGELOG.md) — 版本歷史
 
 ## 文化尊重
 
-本 Skill 為民俗文化的趣味實踐，內建多項安全守則（低潮偵測、拒絕傷害意圖、附專業建議、避免儀式擬仿等），詳見 [`SKILL.md`](SKILL.md) 第七章。
+本 Skill 為民俗文化的趣味實踐，內建多項安全守則（低潮偵測、拒絕傷害意圖、附專業建議、避免儀式擬仿等），詳見各 SKILL.md 的「安全與文化守則」章節。
 
 擲筊結果為 Claude AI 基於語意分析的擬真回應，**非真實神明聖示**，請作為第二意見參考。
 
